@@ -60,15 +60,3 @@ s21_3dViewer.a:
 tests: s21_3dViewer.a
 	cd ./CFiles/ && cp s21_3dViewer.a ../test/
 	cd ./test/ && $(CC) -fsanitize=address -lcheck test.c s21_3dViewer.a -o test.out && ./test.out
-
-#	== ПРОВЕРКА СТИЛЯ ==
-clang:
-	cp ../materials/linters/.clang-format CFiles/
-	cp ../materials/linters/.clang-format 3DViewer/
-	cp ../materials/linters/.clang-format test/
-	cd ./CFiles/ && clang-format -n *.c *.h
-	cd ./3DViewer/ && clang-format -n *.cpp *.h
-	cd ./test/ && clang-format -n *.c
-	rm CFiles/.clang-format
-	rm 3DViewer/.clang-format
-	rm test/.clang-format
